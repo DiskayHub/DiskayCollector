@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskayCollector.Application", "DiskayCollector.Application\DiskayCollector.Application.csproj", "{162BAA3F-BEF4-4EDD-8072-87C2B872683D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskayCollector.Core", "DiskayCollector.Core\DiskayCollector.Core.csproj", "{33181D45-B3F9-45DC-BAED-CF471FB48620}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskayCollector.Tests", "DiskayCollector.Tests\DiskayCollector.Tests.csproj", "{A2D583AC-EB80-4E65-9449-3A2527FB86D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{162BAA3F-BEF4-4EDD-8072-87C2B872683D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{162BAA3F-BEF4-4EDD-8072-87C2B872683D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{162BAA3F-BEF4-4EDD-8072-87C2B872683D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{162BAA3F-BEF4-4EDD-8072-87C2B872683D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33181D45-B3F9-45DC-BAED-CF471FB48620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33181D45-B3F9-45DC-BAED-CF471FB48620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33181D45-B3F9-45DC-BAED-CF471FB48620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33181D45-B3F9-45DC-BAED-CF471FB48620}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2D583AC-EB80-4E65-9449-3A2527FB86D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2D583AC-EB80-4E65-9449-3A2527FB86D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2D583AC-EB80-4E65-9449-3A2527FB86D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2D583AC-EB80-4E65-9449-3A2527FB86D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
