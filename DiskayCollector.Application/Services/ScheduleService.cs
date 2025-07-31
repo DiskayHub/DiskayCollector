@@ -3,6 +3,7 @@ using System.Text.Json;
 using DiskayCollector.Application.Contracts;
 using DiskayCollector.Application.Data;
 using DiskayCollector.Application.Interfaces;
+using DiskayCollector.Application.Modules;
 using DiskayCollector.Core.Models;
 
 namespace DiskayCollector.Application.Controllers;
@@ -18,11 +19,7 @@ public class ScheduleService : IScheduleService {
 
     public async Task<DayScheduleEntity>? GetDaySchedule(DateOnly day, string group) {
         try{
-            var body = ApiScheduleRequest.CreatePeriod(
-                day_start: new DateOnly(2025, 4, 15),
-                day_end: new DateOnly(2025, 4, 20),
-                group: group
-            );
+            var body = ApiScheduleRequest.CreateDefault(day, group);
             
             var bodyRequest = new ScheduleBodyRequest(body);
 
@@ -31,19 +28,10 @@ public class ScheduleService : IScheduleService {
             if (response.IsSuccessStatusCode){
                 var responseStringContent =  await response.Content.ReadAsStringAsync();
                 var result =  JsonSerializer.Deserialize<List<ApiItem>>(responseStringContent);
-
-                var items = ScheduleFormatter.FormatScheduleItems(
-                    data: result, 
-                    dayFilter: day
-                );
-
-                var DaySchedule = new DayScheduleEntity(
-                    day: day,
-                    mainGroup: new GroupEntity(group),
-                    items: items
-                );
                 
-                return DaySchedule;
+                var daySchedule = ScheduleFormatter.FormatScheduleDay(result, day, group);
+
+                if (daySchedule != null) return daySchedule;
             }
             return null;
         }
@@ -52,7 +40,31 @@ public class ScheduleService : IScheduleService {
         }
     }
 
-    public Task<List<DayScheduleEntity>> GetWeekSchedule(DateOnly date, string group) {
-        throw new NotImplementedException();
+    public async Task<List<DayScheduleEntity>> GetWeekSchedule(DateOnly dateStart, string group) {
+        try{
+            var weekPeriod = TimeHelper.GetWeekPeriod(dateStart);
+            var body = ApiScheduleRequest.CreatePeriod(
+                day_start: weekPeriod.Start,
+                day_end: weekPeriod.End,
+                group: group
+            );
+
+            var bodyRequest = new ScheduleBodyRequest(body);
+
+            var response = await _httpClient.PostAsync(_baseUrl, bodyRequest.GetBodyContent());
+
+            if (response.IsSuccessStatusCode){
+                var responseStringContent = await response.Content.ReadAsStringAsync();
+                var result = JsonSerializer.Deserialize<List<ApiItem>>(responseStringContent);
+
+                var dayEntities = ScheduleFormatter.FormatSchedulePeriod(result, group);
+                return dayEntities;
+                
+            }
+            return null;
+        }
+        catch (Exception ex){
+            throw new Exception("SCHEDULE_SERVICE_ERROR:", ex);
+        }
     }
 }
