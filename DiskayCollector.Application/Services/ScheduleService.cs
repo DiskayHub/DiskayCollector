@@ -1,4 +1,3 @@
-using System.Globalization;
 using System.Text.Json;
 using DiskayCollector.Application.Contracts;
 using DiskayCollector.Application.Data;
@@ -6,7 +5,7 @@ using DiskayCollector.Application.Interfaces;
 using DiskayCollector.Application.Modules;
 using DiskayCollector.Core.Models;
 
-namespace DiskayCollector.Application.Controllers;
+namespace DiskayCollector.Application.Services;
 
 public class ScheduleService : IScheduleService {
     private readonly HttpClient _httpClient;

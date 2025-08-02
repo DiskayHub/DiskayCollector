@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System.Text.Json;
 using DiskayCollector.Application.Contracts;
-using DiskayCollector.Application.Controllers;
+using DiskayCollector.Application.Services;
 
 var requestBody = ApiScheduleRequest.CreateDefault (
       date: new DateOnly(2025, 4, 18),
