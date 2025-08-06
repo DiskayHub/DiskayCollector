@@ -1,6 +1,6 @@
-using DiskayCollector.Service.Contracts.Other;
+using DiskayCollector.CollegeAPI.Contracts.Other;
 
-namespace DiskayCollector.Service.Modules;
+namespace DiskayCollector.CollegeAPI.Modules;
 
 public class TimeHelper {
 

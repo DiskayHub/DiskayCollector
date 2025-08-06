@@ -3,9 +3,8 @@ using DiskayCollector.CollegeAPI.Contracts;
 using DiskayCollector.CollegeAPI.Data;
 using DiskayCollector.CollegeAPI.Interfaces;
 using DiskayCollector.Core.Models;
-using DiskayCollector.CollegeAPI.Modules;
 
-namespace DiskayCollector.CollegeAPI.Services;
+namespace DiskayCollector.CollegeAPI;
 
 public class ScheduleService : IScheduleService {
     private readonly HttpClient _httpClient;
@@ -16,7 +15,7 @@ public class ScheduleService : IScheduleService {
         _baseUrl = baseUrl;
     }
 
-    public async Task<DayScheduleEntity>? GetDaySchedule(DateOnly day, string group) {
+    public async Task<DayScheduleEntity?> GetDaySchedule(DateOnly day, string group) {
         try{
             var body = ApiScheduleRequest.CreateDefault(day, group);
             

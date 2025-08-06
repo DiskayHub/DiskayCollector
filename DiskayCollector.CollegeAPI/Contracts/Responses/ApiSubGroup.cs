@@ -1,4 +1,4 @@
-namespace DiskayCollector.Service.Contracts;
+namespace DiskayCollector.CollegeAPI.Contracts;
 
 public record ApiSubGroup(
     string SClID,
