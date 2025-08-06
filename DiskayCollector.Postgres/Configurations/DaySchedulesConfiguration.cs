@@ -10,6 +10,7 @@ public class DaySchedulesConfiguration : IEntityTypeConfiguration<DayScheduleEnt
         builder.HasKey(k => k.Id);
         builder.Property(p => p.Id).ValueGeneratedNever();
         builder.Property(p => p.MainGroup).IsRequired();
+        builder.Property(p => p.Date).IsRequired();
         builder
             .HasMany(p => p.Items)
             .WithOne()

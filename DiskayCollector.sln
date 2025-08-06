@@ -1,12 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskayCollector.Application", "DiskayCollector.Application\DiskayCollector.Application.csproj", "{162BAA3F-BEF4-4EDD-8072-87C2B872683D}"
+#
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskayCollector.CollegeAPI", "DiskayCollector.CollegeAPI\DiskayCollector.CollegeAPI.csproj", "{162BAA3F-BEF4-4EDD-8072-87C2B872683D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskayCollector.Core", "DiskayCollector.Core\DiskayCollector.Core.csproj", "{33181D45-B3F9-45DC-BAED-CF471FB48620}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskayCollector.Tests", "DiskayCollector.Tests\DiskayCollector.Tests.csproj", "{A2D583AC-EB80-4E65-9449-3A2527FB86D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskayCollector.Analyser", "DiskayCollector.Analyser\DiskayCollector.Analyser.csproj", "{2FEE2DFF-4520-4AC4-B0CF-897ABCEA0943}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskayCollector.Service", "DiskayCollector.Service\DiskayCollector.Service.csproj", "{2FEE2DFF-4520-4AC4-B0CF-897ABCEA0943}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskayCollector.Postgres", "DiskayCollector.Postgres\DiskayCollector.Postgres.csproj", "{B06C0E4C-DC6E-4FEA-9705-D9DC8007169B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskayCollector.API", "DiskayCollector.API\DiskayCollector.API.csproj", "{9E99E050-73D3-41A9-ADD0-CA8D4C0B0A7B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E7670345-ED7C-4343-9173-DB691AD4EBD0}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +40,13 @@ Global
 		{2FEE2DFF-4520-4AC4-B0CF-897ABCEA0943}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FEE2DFF-4520-4AC4-B0CF-897ABCEA0943}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FEE2DFF-4520-4AC4-B0CF-897ABCEA0943}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B06C0E4C-DC6E-4FEA-9705-D9DC8007169B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B06C0E4C-DC6E-4FEA-9705-D9DC8007169B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B06C0E4C-DC6E-4FEA-9705-D9DC8007169B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B06C0E4C-DC6E-4FEA-9705-D9DC8007169B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E99E050-73D3-41A9-ADD0-CA8D4C0B0A7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E99E050-73D3-41A9-ADD0-CA8D4C0B0A7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E99E050-73D3-41A9-ADD0-CA8D4C0B0A7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E99E050-73D3-41A9-ADD0-CA8D4C0B0A7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
