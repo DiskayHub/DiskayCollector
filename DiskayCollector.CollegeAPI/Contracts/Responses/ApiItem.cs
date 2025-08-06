@@ -1,4 +1,4 @@
-namespace DiskayCollector.ScheduleService.Contracts;
+namespace DiskayCollector.Service.Contracts;
 
 public record ApiItem(
     string ClID,

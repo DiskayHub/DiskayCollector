@@ -1,6 +1,6 @@
-using DiskayCollector.ScheduleService.Contracts.Other;
+using DiskayCollector.Service.Contracts.Other;
 
-namespace DiskayCollector.ScheduleService.Modules;
+namespace DiskayCollector.Service.Modules;
 
 public class TimeHelper {
 

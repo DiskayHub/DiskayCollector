@@ -2,9 +2,9 @@ using System.Diagnostics.Contracts;
 using System.Text;
 using System.Text.Json;
 using DiskayCollector.Core.Models;
-using DiskayCollector.ScheduleService.Contracts;
+using DiskayCollector.Service.Contracts;
 
-namespace DiskayCollector.ScheduleService.Data;
+namespace DiskayCollector.Service.Data;
 
 public class ScheduleBodyRequest {
     private ApiScheduleRequest _body;

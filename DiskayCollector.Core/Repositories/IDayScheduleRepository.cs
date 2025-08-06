@@ -5,5 +5,6 @@ namespace DiskayCollector.Core.Repositories;
 public interface IDayScheduleRepository {
     public Task<Guid> Create(DayScheduleEntity dayScheduleEntity);
     public Task<Guid> Update(Guid id, List<ItemEntity> items);
+    public Task<List<DayScheduleEntity>> GetAll();
     public Task<Guid> Delete(Guid id);
 }

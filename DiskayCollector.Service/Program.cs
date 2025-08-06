@@ -1,11 +1,47 @@
-﻿using DiskayCollector.Application.Contracts;
-using DiskayCollector.Application.Services;
+﻿using DiskayCollector.CollegeAPI;
+using DiskayCollector.CollegeAPI.Contracts;
 using DiskayCollector.Core.Models;
+using DiskayCollector.Postgres;
 
 var dateNow = new DateOnly(2025, 04, 14);
 var timeNow = new TimeOnly(9, 0);
 var app = new App(dateNow, timeNow);
 await app.Start();
+
+var requestBody = ApiScheduleRequest.CreateDefault (
+    date: new DateOnly(2025, 4, 18),
+    group: "ИТ23-11"
+);
+
+var httpClient = new HttpClient();
+var baseUrl = "https://portal.it-college.ru/schedule.php";
+
+var dayDate = new DateOnly(2025, 4, 14);
+var group = "ИТ24-13";
+
+var scheduleService = new ScheduleService(httpClient,  baseUrl);
+var scheduleDay = await scheduleService.GetDaySchedule(dayDate, group);
+
+Console.WriteLine("---НАЧАЛО_ДНЯ---");
+Console.WriteLine("ДАТА: " + scheduleDay.Date.ToString("yyyy-MM-dd"));
+Console.WriteLine("ДЕНЬ: " + scheduleDay.Date.DayOfWeek);
+Console.WriteLine("ГРУППА: " + scheduleDay.MainGroup);
+
+foreach (var item in scheduleDay.Items) {
+    Console.WriteLine("ПРЕДМЕТ: " + item.Name + " --> " + item.StartTime.ToString("HH:mm"));
+    if (item.SubGroupsItems != null){
+        foreach (var subGroup in item.SubGroupsItems){
+            Console.WriteLine("-->Группа: " + subGroup.Name);
+            Console.WriteLine("---->Кабинет: " + subGroup.RoomName);
+            if (!string.IsNullOrEmpty(subGroup.Description)){
+                Console.WriteLine("---->Подгруппа: " + subGroup.Description);
+            }
+        }
+    }
+}     
+Console.WriteLine("---КОНЕЦ_ДНЯ---");
+Console.WriteLine();
+
 
 public class App {
     private readonly DateOnly _dateNow;
@@ -68,3 +104,4 @@ public class App {
         }
     }
 }
+

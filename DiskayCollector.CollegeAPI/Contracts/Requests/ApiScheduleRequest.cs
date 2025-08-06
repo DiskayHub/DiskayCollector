@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace DiskayCollector.ScheduleService.Contracts;
+namespace DiskayCollector.Service.Contracts;
 public class ApiScheduleRequest {
     public string d_start {get; }
     public string d_end { get; }

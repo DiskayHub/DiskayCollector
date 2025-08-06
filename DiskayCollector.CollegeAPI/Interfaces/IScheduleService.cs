@@ -1,6 +1,6 @@
 using DiskayCollector.Core.Models;
 
-namespace DiskayCollector.ScheduleService.Interfaces;
+namespace DiskayCollector.Service.Interfaces;
 
 public interface IScheduleService {
     public Task<DayScheduleEntity>? GetDaySchedule(DateOnly date, string group);

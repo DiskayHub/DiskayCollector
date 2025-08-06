@@ -6,12 +6,14 @@ public class ItemEntity {
     public string Name { get; }
     public string Description { get; }
     public string RoomName { get; }
-    public List<SubGroupItemEntity>? SubGroupsItems { get; }
+    public List<SubGroupItemEntity>? SubGroupsItems { get; set;  }
     public TimeOnly StartTime { get; }
     public TimeOnly EndTime { get; }
     
     public Guid DayScheduleId { get;  }
     public DayScheduleEntity DaySchedule { get; }
+
+    public ItemEntity() {}
     
     private ItemEntity(Guid id, string name, string? description, string roomName, 
         List<SubGroupItemEntity> subGroupsItems, TimeOnly startTime, TimeOnly endTime, Guid dayScheduleId) 

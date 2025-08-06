@@ -1,4 +1,4 @@
-namespace DiskayCollector.ScheduleService.Contracts.Other;
+namespace DiskayCollector.Service.Contracts.Other;
 
 public record TimePeriod(
     DateOnly Start,

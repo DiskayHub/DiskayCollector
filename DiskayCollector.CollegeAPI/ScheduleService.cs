@@ -1,11 +1,11 @@
 using System.Text.Json;
+using DiskayCollector.CollegeAPI.Contracts;
+using DiskayCollector.CollegeAPI.Data;
+using DiskayCollector.CollegeAPI.Interfaces;
 using DiskayCollector.Core.Models;
-using DiskayCollector.ScheduleService.Contracts;
-using DiskayCollector.ScheduleService.Data;
-using DiskayCollector.ScheduleService.Interfaces;
-using DiskayCollector.ScheduleService.Modules;
+using DiskayCollector.CollegeAPI.Modules;
 
-namespace DiskayCollector.ScheduleService.Services;
+namespace DiskayCollector.CollegeAPI.Services;
 
 public class ScheduleService : IScheduleService {
     private readonly HttpClient _httpClient;
@@ -40,30 +40,31 @@ public class ScheduleService : IScheduleService {
     }
 
     public async Task<List<DayScheduleEntity>> GetWeekSchedule(DateOnly dateStart, string group) {
-        try{
-            var weekPeriod = TimeHelper.GetWeekPeriod(dateStart);
-            var body = ApiScheduleRequest.CreatePeriod(
-                day_start: weekPeriod.Start,
-                day_end: weekPeriod.End,
-                group: group
-            );
-
-            var bodyRequest = new ScheduleBodyRequest(body);
-
-            var response = await _httpClient.PostAsync(_baseUrl, bodyRequest.GetBodyContent());
-
-            if (response.IsSuccessStatusCode){
-                var responseStringContent = await response.Content.ReadAsStringAsync();
-                var result = JsonSerializer.Deserialize<List<ApiItem>>(responseStringContent);
-
-                var dayEntities = ScheduleFormatter.FormatSchedulePeriod(result, group);
-                return dayEntities;
-                
-            }
-            return null;
-        }
-        catch (Exception ex){
-            throw new Exception("SCHEDULE_SERVICE_ERROR:", ex);
-        }
+        // try{
+        //     var weekPeriod = TimeHelper.GetWeekPeriod(dateStart);
+        //     var body = ApiScheduleRequest.CreatePeriod(
+        //         day_start: weekPeriod.Start,
+        //         day_end: weekPeriod.End,
+        //         group: group
+        //     );
+        //
+        //     var bodyRequest = new ScheduleBodyRequest(body);
+        //
+        //     var response = await _httpClient.PostAsync(_baseUrl, bodyRequest.GetBodyContent());
+        //
+        //     if (response.IsSuccessStatusCode){
+        //         var responseStringContent = await response.Content.ReadAsStringAsync();
+        //         var result = JsonSerializer.Deserialize<List<ApiItem>>(responseStringContent);
+        //
+        //         var dayEntities = ScheduleFormatter.FormatSchedulePeriod(result, group);
+        //         return dayEntities;
+        //         
+        //     }
+        //     return null;
+        // }
+        // catch (Exception ex){
+        //     throw new Exception("SCHEDULE_SERVICE_ERROR:", ex);
+        // }
+        throw new NotImplementedException();
     }
 }
