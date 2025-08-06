@@ -1,0 +1,6 @@
+@DiskayCollector.API_HostAddress = http://localhost:5171
+
+GET {{DiskayCollector.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
