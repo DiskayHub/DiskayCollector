@@ -1,9 +1,9 @@
 using System.Globalization;
-using DiskayCollector.Application.Contracts;
-using DiskayCollector.Application.Contracts.Other;
+using DiskayCollector.ScheduleService.Contracts.Other;
 using DiskayCollector.Core.Models;
+using DiskayCollector.ScheduleService.Contracts;
 
-namespace DiskayCollector.Application.Data;
+namespace DiskayCollector.ScheduleService.Data;
 
 public class ScheduleFormatter {
     public static DayScheduleEntity? FormatScheduleDay(List<ApiItem> data, DateOnly dayFilter, string group) {

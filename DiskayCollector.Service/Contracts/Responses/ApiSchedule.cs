@@ -1,4 +1,4 @@
-namespace DiskayCollector.Application.Contracts;
+namespace DiskayCollector.ScheduleService.Contracts;
 
 public record ApiSchedule( 
     List<ApiItem> Items
