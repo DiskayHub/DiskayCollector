@@ -4,7 +4,7 @@ public class DayScheduleEntity {
     public Guid Id { get; }
     public DateOnly Date { get; }
     public string MainGroup { get; }
-    public List<ItemEntity> Items { get; }
+    public List<ItemEntity> Items { get; set;  }
 
     public DayScheduleEntity() {}
 

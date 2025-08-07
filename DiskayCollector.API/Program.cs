@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using DiskayCollector.Core.Models;
 using DiskayCollector.Core.Repositories;
 using DiskayCollector.Postgres;
@@ -9,7 +10,10 @@ var configuration = builder.Configuration;
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options => {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
 
 builder.Services.AddDbContext<DayItemsDbContext>(
     options => {

@@ -54,57 +54,58 @@ public class ScheduleFormatter {
         return null;
     }
 
-    // public static List<DayScheduleEntity?> FormatSchedulePeriod(List<ApiItem> data, string group) {
-    //     var days = new Dictionary<DateOnly, DayScheduleEntity>();
-    //
-    //     foreach (ApiItem item in data) {
-    //         var subGroupItems = new List<SubGroupItemEntity>();
-    //         if (item.SubGroup != null) {
-    //             foreach (ApiSubGroup subItem in item.SubGroup){
-    //                 var subGroupItem = SubGroupItemEntity.Create (
-    //                     name: subItem.STitle,
-    //                     description: subItem.STopic,
-    //                     roomName: subItem.SGCaID,
-    //                     subGroup: subItem.SGrID,
-    //                     itemId: 
-    //                 );
-    //                 subGroupItems.Add(subGroupItem);
-    //             }
-    //         }
-    //
-    //         var time_start = DateTime.ParseExact(item.start, "yyyy-MM-dd HH:mm", 
-    //             CultureInfo.InvariantCulture);
-    //         var time_end = DateTime.ParseExact(item.end, "yyyy-MM-dd HH:mm", 
-    //             CultureInfo.InvariantCulture);
-    //
-    //
-    //         var day_only = new DateOnly(time_end.Year, time_end.Month, time_end.Day);
-    //
-    //         if (!days.ContainsKey(day_only)) {
-    //             days[day_only] = DayScheduleEntity.Create(day_only, 
-    //                 group, new List<ItemEntity>());
-    //         }
-    //             
-    //         var itemEntity = ItemEntity.Create(
-    //             name: item.title,
-    //             description: item.topic,
-    //             roomName: item.room,
-    //             subGroupsItems: subGroupItems.Count != 0 ? subGroupItems : null,
-    //             startTime: TimeOnly.FromDateTime(time_start),
-    //             endTime: TimeOnly.FromDateTime(time_end),
-    //             dayScheduleId: 
-    //         );
-    //             
-    //         days[day_only].Items.Add(itemEntity);
-    //     }
-    //     
-    //     if (days.Count != 0){
-    //         var daysEntities = new List<DayScheduleEntity>();
-    //         foreach (var pair in days){
-    //             daysEntities.Add(pair.Value);
-    //         }
-    //         return daysEntities;
-    //     }
-    //     return null;
-    // }
+    public static List<DayScheduleEntity?> FormatSchedulePeriod(List<ApiItem> data, string group) {
+        var days = new Dictionary<DateOnly, DayScheduleEntity>();
+    
+        foreach (ApiItem item in data) {
+            var subGroupItems = new List<SubGroupItemEntity>();
+            
+            var time_start = DateTime.ParseExact(item.start, "yyyy-MM-dd HH:mm", 
+                CultureInfo.InvariantCulture);
+            var time_end = DateTime.ParseExact(item.end, "yyyy-MM-dd HH:mm", 
+                CultureInfo.InvariantCulture);
+            
+            var day_only = new DateOnly(time_end.Year, time_end.Month, time_end.Day);
+            
+            if (!days.ContainsKey(day_only)) {
+                days[day_only] = DayScheduleEntity.Create(day_only, 
+                    group, new List<ItemEntity>());
+            }
+            
+            var itemEntity = ItemEntity.Create(
+                name: item.title,
+                description: item.topic,
+                roomName: item.room,
+                subGroupsItems: null,
+                startTime: TimeOnly.FromDateTime(time_start),
+                endTime: TimeOnly.FromDateTime(time_end),
+                dayScheduleId: days[day_only].Id
+            );
+            
+            if (item.SubGroup != null) {
+                foreach (ApiSubGroup subItem in item.SubGroup){
+                    var subGroupItem = SubGroupItemEntity.Create (
+                        name: subItem.STitle,
+                        description: subItem.STopic,
+                        roomName: subItem.SGCaID,
+                        subGroup: subItem.SGrID,
+                        itemId: itemEntity.Id
+                    );
+                    subGroupItems.Add(subGroupItem);
+                }
+                itemEntity.SubGroupsItems = subGroupItems;
+            }
+                
+            days[day_only].Items.Add(itemEntity);
+        }
+        
+        if (days.Count != 0){
+            var daysEntities = new List<DayScheduleEntity>();
+            foreach (var pair in days){
+                daysEntities.Add(pair.Value);
+            }
+            return daysEntities;
+        }
+        return null;
+    }
 }

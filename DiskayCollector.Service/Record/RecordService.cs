@@ -15,11 +15,13 @@ public class RecordService {
 
     public async Task FastRecord() {
         var dateNow = new DateOnly(2025, 04, 14);
-        var scheduleDay = await _scheduleService.GetDaySchedule(dateNow, "ИТ24-13");
+        var scheduleDays = await _scheduleService.GetWeekSchedule(dateNow, "ИТ24-13");
 
-        if (scheduleDay != null){
-            await _database.DaySchedules.AddAsync(scheduleDay);
-            await _database.SaveChangesAsync();
+        if (scheduleDays.Count != 0){
+            foreach (var day in scheduleDays) {
+                await _database.DaySchedules.AddAsync(day);
+                await _database.SaveChangesAsync();   
+            }
         }
     }
 }

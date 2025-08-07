@@ -10,6 +10,7 @@ public class SubGroupsConfiguration : IEntityTypeConfiguration<SubGroupItemEntit
         builder.Property(p => p.Id).ValueGeneratedNever();
         builder.Property(p => p.Name).IsRequired();
         builder.Property(p => p.Description);
+        builder.Property(p => p.RoomName);
         builder.Property(p => p.SubGroup).IsRequired();
         builder
             .HasOne(p => p.Item)
