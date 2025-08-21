@@ -59,8 +59,10 @@ namespace DiskayCollector.API.Controllers {
             try{
                 var daySchedule = await _dayScheduleRepository.GetScheduleByFilter(
                     date: query.date,
-                    group_name: query.group_name,
-                    subGroups: new[] { query.EnglishSubGroup, query.MainSubGroup, query.ProfileSubGroup }.ToList()
+                    groupName: query.group_name,
+                    engGroup: query.EnglishSubGroup,
+                    MainSubGroup: query.MainSubGroup,
+                    profGroup: query.ProfileSubGroup
                 );
 
                 if (daySchedule != null){

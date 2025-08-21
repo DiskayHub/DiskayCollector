@@ -5,5 +5,5 @@ public record GetScheduleFilter(
     string group_name,
     string? MainSubGroup, 
     string? ProfileSubGroup, 
-    string EnglishSubGroup
+    string? EnglishSubGroup
 );
